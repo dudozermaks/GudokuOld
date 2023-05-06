@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=850
 window/size/viewport_height=850
 
+[editor]
+
+movie_writer/movie_file="/home/maks/Videos/gudoku_v0.0.1.avi"
+
 [input]
 
 1={
