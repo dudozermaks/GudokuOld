@@ -5,381 +5,406 @@
 [ext_resource type="Script" path="res://field.gd" id="1_tsprt"]
 [ext_resource type="Theme" uid="uid://cehm4ltbbplli" path="res://square.theme" id="2_m0a4u"]
 
-[node name="Field" type="VBoxContainer"]
-offset_right = 850.0
-offset_bottom = 850.0
-theme = ExtResource("1_h3fbc")
-alignment = 1
+[node name="Main" type="Node2D"]
 script = ExtResource("1_tsprt")
 
-[node name="Line1" type="HBoxContainer" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 850.0
+offset_bottom = 850.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.513726, 0.647059, 0.596078, 1)
+
+[node name="Field" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_h3fbc")
+alignment = 1
+
+[node name="Line1" type="HBoxContainer" parent="Control/Field"]
 layout_mode = 2
 alignment = 1
 
-[node name="Square1" type="VBoxContainer" parent="Line1"]
+[node name="Square1" type="VBoxContainer" parent="Control/Field/Line1"]
 layout_mode = 2
 theme = ExtResource("2_m0a4u")
 
-[node name="Line1" type="HBoxContainer" parent="Line1/Square1"]
+[node name="Line1" type="HBoxContainer" parent="Control/Field/Line1/Square1"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line1/Square1/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line1/Square1/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line1/Square1/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line1/Square1/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line1/Square1/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line1/Square1/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line2" type="HBoxContainer" parent="Line1/Square1"]
+[node name="Line2" type="HBoxContainer" parent="Control/Field/Line1/Square1"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line1/Square1/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line1/Square1/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line1/Square1/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line1/Square1/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line1/Square1/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line1/Square1/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line3" type="HBoxContainer" parent="Line1/Square1"]
+[node name="Line3" type="HBoxContainer" parent="Control/Field/Line1/Square1"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line1/Square1/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line1/Square1/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line1/Square1/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line1/Square1/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line1/Square1/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line1/Square1/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Square2" type="VBoxContainer" parent="Line1"]
-layout_mode = 2
-theme = ExtResource("2_m0a4u")
-
-[node name="Line1" type="HBoxContainer" parent="Line1/Square2"]
-layout_mode = 2
-
-[node name="Cell1" parent="Line1/Square2/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell2" parent="Line1/Square2/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell3" parent="Line1/Square2/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Line2" type="HBoxContainer" parent="Line1/Square2"]
-layout_mode = 2
-
-[node name="Cell1" parent="Line1/Square2/Line2" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell2" parent="Line1/Square2/Line2" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell3" parent="Line1/Square2/Line2" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Line3" type="HBoxContainer" parent="Line1/Square2"]
-layout_mode = 2
-
-[node name="Cell1" parent="Line1/Square2/Line3" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell2" parent="Line1/Square2/Line3" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell3" parent="Line1/Square2/Line3" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Square3" type="VBoxContainer" parent="Line1"]
+[node name="Square2" type="VBoxContainer" parent="Control/Field/Line1"]
 layout_mode = 2
 theme = ExtResource("2_m0a4u")
 
-[node name="Line1" type="HBoxContainer" parent="Line1/Square3"]
+[node name="Line1" type="HBoxContainer" parent="Control/Field/Line1/Square2"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line1/Square3/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line1/Square2/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line1/Square3/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line1/Square2/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line1/Square3/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line1/Square2/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line2" type="HBoxContainer" parent="Line1/Square3"]
+[node name="Line2" type="HBoxContainer" parent="Control/Field/Line1/Square2"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line1/Square3/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line1/Square2/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line1/Square3/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line1/Square2/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line1/Square3/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line1/Square2/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line3" type="HBoxContainer" parent="Line1/Square3"]
+[node name="Line3" type="HBoxContainer" parent="Control/Field/Line1/Square2"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line1/Square3/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line1/Square2/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line1/Square3/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line1/Square2/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line1/Square3/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line1/Square2/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line2" type="HBoxContainer" parent="."]
+[node name="Square3" type="VBoxContainer" parent="Control/Field/Line1"]
+layout_mode = 2
+theme = ExtResource("2_m0a4u")
+
+[node name="Line1" type="HBoxContainer" parent="Control/Field/Line1/Square3"]
+layout_mode = 2
+
+[node name="Cell1" parent="Control/Field/Line1/Square3/Line1" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell2" parent="Control/Field/Line1/Square3/Line1" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell3" parent="Control/Field/Line1/Square3/Line1" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Line2" type="HBoxContainer" parent="Control/Field/Line1/Square3"]
+layout_mode = 2
+
+[node name="Cell1" parent="Control/Field/Line1/Square3/Line2" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell2" parent="Control/Field/Line1/Square3/Line2" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell3" parent="Control/Field/Line1/Square3/Line2" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Line3" type="HBoxContainer" parent="Control/Field/Line1/Square3"]
+layout_mode = 2
+
+[node name="Cell1" parent="Control/Field/Line1/Square3/Line3" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell2" parent="Control/Field/Line1/Square3/Line3" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell3" parent="Control/Field/Line1/Square3/Line3" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Line2" type="HBoxContainer" parent="Control/Field"]
 layout_mode = 2
 alignment = 1
 
-[node name="Square1" type="VBoxContainer" parent="Line2"]
+[node name="Square1" type="VBoxContainer" parent="Control/Field/Line2"]
 layout_mode = 2
 theme = ExtResource("2_m0a4u")
 
-[node name="Line1" type="HBoxContainer" parent="Line2/Square1"]
+[node name="Line1" type="HBoxContainer" parent="Control/Field/Line2/Square1"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line2/Square1/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line2/Square1/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line2/Square1/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line2/Square1/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line2/Square1/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line2/Square1/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line2" type="HBoxContainer" parent="Line2/Square1"]
+[node name="Line2" type="HBoxContainer" parent="Control/Field/Line2/Square1"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line2/Square1/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line2/Square1/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line2/Square1/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line2/Square1/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line2/Square1/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line2/Square1/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line3" type="HBoxContainer" parent="Line2/Square1"]
+[node name="Line3" type="HBoxContainer" parent="Control/Field/Line2/Square1"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line2/Square1/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line2/Square1/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line2/Square1/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line2/Square1/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line2/Square1/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line2/Square1/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Square2" type="VBoxContainer" parent="Line2"]
-layout_mode = 2
-theme = ExtResource("2_m0a4u")
-
-[node name="Line1" type="HBoxContainer" parent="Line2/Square2"]
-layout_mode = 2
-
-[node name="Cell1" parent="Line2/Square2/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell2" parent="Line2/Square2/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell3" parent="Line2/Square2/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Line2" type="HBoxContainer" parent="Line2/Square2"]
-layout_mode = 2
-
-[node name="Cell1" parent="Line2/Square2/Line2" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell2" parent="Line2/Square2/Line2" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell3" parent="Line2/Square2/Line2" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Line3" type="HBoxContainer" parent="Line2/Square2"]
-layout_mode = 2
-
-[node name="Cell1" parent="Line2/Square2/Line3" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell2" parent="Line2/Square2/Line3" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell3" parent="Line2/Square2/Line3" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Square3" type="VBoxContainer" parent="Line2"]
+[node name="Square2" type="VBoxContainer" parent="Control/Field/Line2"]
 layout_mode = 2
 theme = ExtResource("2_m0a4u")
 
-[node name="Line1" type="HBoxContainer" parent="Line2/Square3"]
+[node name="Line1" type="HBoxContainer" parent="Control/Field/Line2/Square2"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line2/Square3/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line2/Square2/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line2/Square3/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line2/Square2/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line2/Square3/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line2/Square2/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line2" type="HBoxContainer" parent="Line2/Square3"]
+[node name="Line2" type="HBoxContainer" parent="Control/Field/Line2/Square2"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line2/Square3/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line2/Square2/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line2/Square3/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line2/Square2/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line2/Square3/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line2/Square2/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line3" type="HBoxContainer" parent="Line2/Square3"]
+[node name="Line3" type="HBoxContainer" parent="Control/Field/Line2/Square2"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line2/Square3/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line2/Square2/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line2/Square3/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line2/Square2/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line2/Square3/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line2/Square2/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line3" type="HBoxContainer" parent="."]
+[node name="Square3" type="VBoxContainer" parent="Control/Field/Line2"]
+layout_mode = 2
+theme = ExtResource("2_m0a4u")
+
+[node name="Line1" type="HBoxContainer" parent="Control/Field/Line2/Square3"]
+layout_mode = 2
+
+[node name="Cell1" parent="Control/Field/Line2/Square3/Line1" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell2" parent="Control/Field/Line2/Square3/Line1" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell3" parent="Control/Field/Line2/Square3/Line1" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Line2" type="HBoxContainer" parent="Control/Field/Line2/Square3"]
+layout_mode = 2
+
+[node name="Cell1" parent="Control/Field/Line2/Square3/Line2" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell2" parent="Control/Field/Line2/Square3/Line2" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell3" parent="Control/Field/Line2/Square3/Line2" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Line3" type="HBoxContainer" parent="Control/Field/Line2/Square3"]
+layout_mode = 2
+
+[node name="Cell1" parent="Control/Field/Line2/Square3/Line3" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell2" parent="Control/Field/Line2/Square3/Line3" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell3" parent="Control/Field/Line2/Square3/Line3" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Line3" type="HBoxContainer" parent="Control/Field"]
 layout_mode = 2
 alignment = 1
 
-[node name="Square1" type="VBoxContainer" parent="Line3"]
+[node name="Square1" type="VBoxContainer" parent="Control/Field/Line3"]
 layout_mode = 2
 theme = ExtResource("2_m0a4u")
 
-[node name="Line1" type="HBoxContainer" parent="Line3/Square1"]
+[node name="Line1" type="HBoxContainer" parent="Control/Field/Line3/Square1"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line3/Square1/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line3/Square1/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line3/Square1/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line3/Square1/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line3/Square1/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line3/Square1/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line2" type="HBoxContainer" parent="Line3/Square1"]
+[node name="Line2" type="HBoxContainer" parent="Control/Field/Line3/Square1"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line3/Square1/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line3/Square1/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line3/Square1/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line3/Square1/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line3/Square1/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line3/Square1/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line3" type="HBoxContainer" parent="Line3/Square1"]
+[node name="Line3" type="HBoxContainer" parent="Control/Field/Line3/Square1"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line3/Square1/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line3/Square1/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line3/Square1/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line3/Square1/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line3/Square1/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line3/Square1/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Square2" type="VBoxContainer" parent="Line3"]
-layout_mode = 2
-theme = ExtResource("2_m0a4u")
-
-[node name="Line1" type="HBoxContainer" parent="Line3/Square2"]
-layout_mode = 2
-
-[node name="Cell1" parent="Line3/Square2/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell2" parent="Line3/Square2/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell3" parent="Line3/Square2/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Line2" type="HBoxContainer" parent="Line3/Square2"]
-layout_mode = 2
-
-[node name="Cell1" parent="Line3/Square2/Line2" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell2" parent="Line3/Square2/Line2" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell3" parent="Line3/Square2/Line2" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Line3" type="HBoxContainer" parent="Line3/Square2"]
-layout_mode = 2
-
-[node name="Cell1" parent="Line3/Square2/Line3" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell2" parent="Line3/Square2/Line3" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell3" parent="Line3/Square2/Line3" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Square3" type="VBoxContainer" parent="Line3"]
+[node name="Square2" type="VBoxContainer" parent="Control/Field/Line3"]
 layout_mode = 2
 theme = ExtResource("2_m0a4u")
 
-[node name="Line1" type="HBoxContainer" parent="Line3/Square3"]
+[node name="Line1" type="HBoxContainer" parent="Control/Field/Line3/Square2"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line3/Square3/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line3/Square2/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line3/Square3/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line3/Square2/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line3/Square3/Line1" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line3/Square2/Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line2" type="HBoxContainer" parent="Line3/Square3"]
+[node name="Line2" type="HBoxContainer" parent="Control/Field/Line3/Square2"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line3/Square3/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line3/Square2/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line3/Square3/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line3/Square2/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line3/Square3/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line3/Square2/Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line3" type="HBoxContainer" parent="Line3/Square3"]
+[node name="Line3" type="HBoxContainer" parent="Control/Field/Line3/Square2"]
 layout_mode = 2
 
-[node name="Cell1" parent="Line3/Square3/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Control/Field/Line3/Square2/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Line3/Square3/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Control/Field/Line3/Square2/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell3" parent="Line3/Square3/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Control/Field/Line3/Square2/Line3" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Square3" type="VBoxContainer" parent="Control/Field/Line3"]
+layout_mode = 2
+theme = ExtResource("2_m0a4u")
+
+[node name="Line1" type="HBoxContainer" parent="Control/Field/Line3/Square3"]
+layout_mode = 2
+
+[node name="Cell1" parent="Control/Field/Line3/Square3/Line1" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell2" parent="Control/Field/Line3/Square3/Line1" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell3" parent="Control/Field/Line3/Square3/Line1" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Line2" type="HBoxContainer" parent="Control/Field/Line3/Square3"]
+layout_mode = 2
+
+[node name="Cell1" parent="Control/Field/Line3/Square3/Line2" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell2" parent="Control/Field/Line3/Square3/Line2" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell3" parent="Control/Field/Line3/Square3/Line2" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Line3" type="HBoxContainer" parent="Control/Field/Line3/Square3"]
+layout_mode = 2
+
+[node name="Cell1" parent="Control/Field/Line3/Square3/Line3" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell2" parent="Control/Field/Line3/Square3/Line3" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell3" parent="Control/Field/Line3/Square3/Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2

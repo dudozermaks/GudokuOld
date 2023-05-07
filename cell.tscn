@@ -8,4 +8,5 @@ custom_minimum_size = Vector2(77, 77)
 offset_right = 77.0
 offset_bottom = 77.0
 theme = ExtResource("1_msv31")
+clip_text = true
 script = ExtResource("1_h7ouj")
