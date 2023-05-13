@@ -1,4 +1,5 @@
 extends Button
+class_name Cell
 
 var numbers : Array[int] = []
 
