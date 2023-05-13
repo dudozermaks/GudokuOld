@@ -84,5 +84,4 @@ func _validate() -> VALIDATE:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (_validate() != 0):
-		print(_validate())
+	pass
