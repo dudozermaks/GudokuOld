@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://cell.gd" id="1_h7ouj"]
 [ext_resource type="Theme" uid="uid://hejq02uy4tug" path="res://cell.theme" id="1_msv31"]
 
-[node name="Cell" type="Button"]
+[node name="Cell" type="Button" groups=["cells"]]
 custom_minimum_size = Vector2(77, 77)
 offset_right = 77.0
 offset_bottom = 77.0

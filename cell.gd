@@ -6,10 +6,7 @@ var numbers : Array[int] = []
 func _ready():
 	pass
 
-func _process(delta):
-	pass
-
-func _input(event):
+func _input(_event):
 	if !has_focus():
 		return;
 	for i in range(1, 10):
@@ -21,10 +18,10 @@ func _input(event):
 	if (Input.is_action_pressed("erase")):
 		numbers.pop_back()
 
-	_update_text()
+	update_text()
 
 
-func _update_text():
+func update_text():
 	numbers.sort()
 	text = ""
 
