@@ -1,34 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c480lkos8ljsl"]
+[gd_scene load_steps=4 format=3 uid="uid://htk5qy2585bv"]
 
 [ext_resource type="PackedScene" uid="uid://bkbki07ysr4uu" path="res://cell.tscn" id="1_2ph6y"]
 [ext_resource type="Script" path="res://field.gd" id="1_tsprt"]
 [ext_resource type="Theme" uid="uid://cehm4ltbbplli" path="res://field.theme" id="2_m0a4u"]
 
-[node name="Main" type="Node2D"]
-script = ExtResource("1_tsprt")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 850.0
-offset_bottom = 850.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.513726, 0.647059, 0.596078, 1)
-
-[node name="Field" type="VBoxContainer" parent="Control"]
-unique_name_in_owner = true
-layout_mode = 1
+[node name="Field" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -36,342 +12,343 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_m0a4u")
 alignment = 1
+script = ExtResource("1_tsprt")
 
-[node name="Line0" type="HBoxContainer" parent="Control/Field"]
+[node name="Line0" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
 
-[node name="Cell0" parent="Control/Field/Line0" instance=ExtResource("1_2ph6y")]
+[node name="Cell0" parent="Line0" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell1" parent="Control/Field/Line0" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Line0" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Control/Field/Line0" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Line0" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split1" type="HSplitContainer" parent="Control/Field/Line0"]
+[node name="Split1" type="HSplitContainer" parent="Line0"]
 layout_mode = 2
 
-[node name="Cell3" parent="Control/Field/Line0" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Line0" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell4" parent="Control/Field/Line0" instance=ExtResource("1_2ph6y")]
+[node name="Cell4" parent="Line0" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell5" parent="Control/Field/Line0" instance=ExtResource("1_2ph6y")]
+[node name="Cell5" parent="Line0" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split2" type="HSplitContainer" parent="Control/Field/Line0"]
+[node name="Split2" type="HSplitContainer" parent="Line0"]
 layout_mode = 2
 
-[node name="Cell6" parent="Control/Field/Line0" instance=ExtResource("1_2ph6y")]
+[node name="Cell6" parent="Line0" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell7" parent="Control/Field/Line0" instance=ExtResource("1_2ph6y")]
+[node name="Cell7" parent="Line0" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell8" parent="Control/Field/Line0" instance=ExtResource("1_2ph6y")]
+[node name="Cell8" parent="Line0" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line1" type="HBoxContainer" parent="Control/Field"]
-layout_mode = 2
-alignment = 1
-
-[node name="Cell0" parent="Control/Field/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell1" parent="Control/Field/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell2" parent="Control/Field/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Split1" type="HSplitContainer" parent="Control/Field/Line1"]
-layout_mode = 2
-
-[node name="Cell3" parent="Control/Field/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell4" parent="Control/Field/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell5" parent="Control/Field/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Split2" type="HSplitContainer" parent="Control/Field/Line1"]
-layout_mode = 2
-
-[node name="Cell6" parent="Control/Field/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell7" parent="Control/Field/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell8" parent="Control/Field/Line1" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Line2" type="HBoxContainer" parent="Control/Field"]
+[node name="Line1" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
 
-[node name="Cell0" parent="Control/Field/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell0" parent="Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell1" parent="Control/Field/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Control/Field/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split1" type="HSplitContainer" parent="Control/Field/Line2"]
+[node name="Split1" type="HSplitContainer" parent="Line1"]
 layout_mode = 2
 
-[node name="Cell3" parent="Control/Field/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell4" parent="Control/Field/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell4" parent="Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell5" parent="Control/Field/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell5" parent="Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split2" type="HSplitContainer" parent="Control/Field/Line2"]
+[node name="Split2" type="HSplitContainer" parent="Line1"]
 layout_mode = 2
 
-[node name="Cell6" parent="Control/Field/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell6" parent="Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell7" parent="Control/Field/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell7" parent="Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell8" parent="Control/Field/Line2" instance=ExtResource("1_2ph6y")]
+[node name="Cell8" parent="Line1" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split1" type="VSplitContainer" parent="Control/Field"]
-layout_mode = 2
-
-[node name="Line3" type="HBoxContainer" parent="Control/Field"]
+[node name="Line2" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
 
-[node name="Cell0" parent="Control/Field/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell0" parent="Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell1" parent="Control/Field/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Control/Field/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split1" type="HSplitContainer" parent="Control/Field/Line3"]
+[node name="Split1" type="HSplitContainer" parent="Line2"]
 layout_mode = 2
 
-[node name="Cell3" parent="Control/Field/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell4" parent="Control/Field/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell4" parent="Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell5" parent="Control/Field/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell5" parent="Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split2" type="HSplitContainer" parent="Control/Field/Line3"]
+[node name="Split2" type="HSplitContainer" parent="Line2"]
 layout_mode = 2
 
-[node name="Cell6" parent="Control/Field/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell6" parent="Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell7" parent="Control/Field/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell7" parent="Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell8" parent="Control/Field/Line3" instance=ExtResource("1_2ph6y")]
+[node name="Cell8" parent="Line2" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line4" type="HBoxContainer" parent="Control/Field"]
-layout_mode = 2
-alignment = 1
-
-[node name="Cell0" parent="Control/Field/Line4" instance=ExtResource("1_2ph6y")]
+[node name="Split1" type="VSplitContainer" parent="."]
 layout_mode = 2
 
-[node name="Cell1" parent="Control/Field/Line4" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell2" parent="Control/Field/Line4" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Split1" type="HSplitContainer" parent="Control/Field/Line4"]
-layout_mode = 2
-
-[node name="Cell3" parent="Control/Field/Line4" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell4" parent="Control/Field/Line4" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell5" parent="Control/Field/Line4" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Split2" type="HSplitContainer" parent="Control/Field/Line4"]
-layout_mode = 2
-
-[node name="Cell6" parent="Control/Field/Line4" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell7" parent="Control/Field/Line4" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell8" parent="Control/Field/Line4" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Line5" type="HBoxContainer" parent="Control/Field"]
+[node name="Line3" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
 
-[node name="Cell0" parent="Control/Field/Line5" instance=ExtResource("1_2ph6y")]
+[node name="Cell0" parent="Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell1" parent="Control/Field/Line5" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Control/Field/Line5" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split1" type="HSplitContainer" parent="Control/Field/Line5"]
+[node name="Split1" type="HSplitContainer" parent="Line3"]
 layout_mode = 2
 
-[node name="Cell3" parent="Control/Field/Line5" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell4" parent="Control/Field/Line5" instance=ExtResource("1_2ph6y")]
+[node name="Cell4" parent="Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell5" parent="Control/Field/Line5" instance=ExtResource("1_2ph6y")]
+[node name="Cell5" parent="Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split2" type="HSplitContainer" parent="Control/Field/Line5"]
+[node name="Split2" type="HSplitContainer" parent="Line3"]
 layout_mode = 2
 
-[node name="Cell6" parent="Control/Field/Line5" instance=ExtResource("1_2ph6y")]
+[node name="Cell6" parent="Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell7" parent="Control/Field/Line5" instance=ExtResource("1_2ph6y")]
+[node name="Cell7" parent="Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell8" parent="Control/Field/Line5" instance=ExtResource("1_2ph6y")]
+[node name="Cell8" parent="Line3" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split2" type="VSplitContainer" parent="Control/Field"]
-layout_mode = 2
-
-[node name="Line6" type="HBoxContainer" parent="Control/Field"]
+[node name="Line4" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
 
-[node name="Cell0" parent="Control/Field/Line6" instance=ExtResource("1_2ph6y")]
+[node name="Cell0" parent="Line4" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell1" parent="Control/Field/Line6" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Line4" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Control/Field/Line6" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Line4" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split1" type="HSplitContainer" parent="Control/Field/Line6"]
+[node name="Split1" type="HSplitContainer" parent="Line4"]
 layout_mode = 2
 
-[node name="Cell3" parent="Control/Field/Line6" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Line4" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell4" parent="Control/Field/Line6" instance=ExtResource("1_2ph6y")]
+[node name="Cell4" parent="Line4" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell5" parent="Control/Field/Line6" instance=ExtResource("1_2ph6y")]
+[node name="Cell5" parent="Line4" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split2" type="HSplitContainer" parent="Control/Field/Line6"]
+[node name="Split2" type="HSplitContainer" parent="Line4"]
 layout_mode = 2
 
-[node name="Cell6" parent="Control/Field/Line6" instance=ExtResource("1_2ph6y")]
+[node name="Cell6" parent="Line4" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell7" parent="Control/Field/Line6" instance=ExtResource("1_2ph6y")]
+[node name="Cell7" parent="Line4" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell8" parent="Control/Field/Line6" instance=ExtResource("1_2ph6y")]
+[node name="Cell8" parent="Line4" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Line7" type="HBoxContainer" parent="Control/Field"]
-layout_mode = 2
-alignment = 1
-
-[node name="Cell0" parent="Control/Field/Line7" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell1" parent="Control/Field/Line7" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell2" parent="Control/Field/Line7" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Split1" type="HSplitContainer" parent="Control/Field/Line7"]
-layout_mode = 2
-
-[node name="Cell3" parent="Control/Field/Line7" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell4" parent="Control/Field/Line7" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell5" parent="Control/Field/Line7" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Split2" type="HSplitContainer" parent="Control/Field/Line7"]
-layout_mode = 2
-
-[node name="Cell6" parent="Control/Field/Line7" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell7" parent="Control/Field/Line7" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Cell8" parent="Control/Field/Line7" instance=ExtResource("1_2ph6y")]
-layout_mode = 2
-
-[node name="Line8" type="HBoxContainer" parent="Control/Field"]
+[node name="Line5" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
 
-[node name="Cell0" parent="Control/Field/Line8" instance=ExtResource("1_2ph6y")]
+[node name="Cell0" parent="Line5" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell1" parent="Control/Field/Line8" instance=ExtResource("1_2ph6y")]
+[node name="Cell1" parent="Line5" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell2" parent="Control/Field/Line8" instance=ExtResource("1_2ph6y")]
+[node name="Cell2" parent="Line5" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split1" type="HSplitContainer" parent="Control/Field/Line8"]
+[node name="Split1" type="HSplitContainer" parent="Line5"]
 layout_mode = 2
 
-[node name="Cell3" parent="Control/Field/Line8" instance=ExtResource("1_2ph6y")]
+[node name="Cell3" parent="Line5" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell4" parent="Control/Field/Line8" instance=ExtResource("1_2ph6y")]
+[node name="Cell4" parent="Line5" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell5" parent="Control/Field/Line8" instance=ExtResource("1_2ph6y")]
+[node name="Cell5" parent="Line5" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Split2" type="HSplitContainer" parent="Control/Field/Line8"]
+[node name="Split2" type="HSplitContainer" parent="Line5"]
 layout_mode = 2
 
-[node name="Cell6" parent="Control/Field/Line8" instance=ExtResource("1_2ph6y")]
+[node name="Cell6" parent="Line5" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell7" parent="Control/Field/Line8" instance=ExtResource("1_2ph6y")]
+[node name="Cell7" parent="Line5" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
 
-[node name="Cell8" parent="Control/Field/Line8" instance=ExtResource("1_2ph6y")]
+[node name="Cell8" parent="Line5" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Split2" type="VSplitContainer" parent="."]
+layout_mode = 2
+
+[node name="Line6" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Cell0" parent="Line6" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell1" parent="Line6" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell2" parent="Line6" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Split1" type="HSplitContainer" parent="Line6"]
+layout_mode = 2
+
+[node name="Cell3" parent="Line6" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell4" parent="Line6" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell5" parent="Line6" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Split2" type="HSplitContainer" parent="Line6"]
+layout_mode = 2
+
+[node name="Cell6" parent="Line6" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell7" parent="Line6" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell8" parent="Line6" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Line7" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Cell0" parent="Line7" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell1" parent="Line7" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell2" parent="Line7" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Split1" type="HSplitContainer" parent="Line7"]
+layout_mode = 2
+
+[node name="Cell3" parent="Line7" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell4" parent="Line7" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell5" parent="Line7" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Split2" type="HSplitContainer" parent="Line7"]
+layout_mode = 2
+
+[node name="Cell6" parent="Line7" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell7" parent="Line7" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell8" parent="Line7" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Line8" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Cell0" parent="Line8" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell1" parent="Line8" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell2" parent="Line8" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Split1" type="HSplitContainer" parent="Line8"]
+layout_mode = 2
+
+[node name="Cell3" parent="Line8" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell4" parent="Line8" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell5" parent="Line8" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Split2" type="HSplitContainer" parent="Line8"]
+layout_mode = 2
+
+[node name="Cell6" parent="Line8" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell7" parent="Line8" instance=ExtResource("1_2ph6y")]
+layout_mode = 2
+
+[node name="Cell8" parent="Line8" instance=ExtResource("1_2ph6y")]
 layout_mode = 2

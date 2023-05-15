@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://1x8qyede46pe"]
+
+[ext_resource type="PackedScene" uid="uid://htk5qy2585bv" path="res://field.tscn" id="1_u7bfg"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(850, 850)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 850.0
+offset_bottom = 850.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 850.0
+offset_bottom = 850.0
+color = Color(0.513726, 0.647059, 0.596078, 1)
+
+[node name="Field" parent="Control" instance=ExtResource("1_u7bfg")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 850.0
+offset_bottom = 850.0
+grow_horizontal = 1
+grow_vertical = 1
