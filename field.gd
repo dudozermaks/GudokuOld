@@ -8,14 +8,14 @@ enum VALIDATE{
 
 const board_size : int = 9
 @warning_ignore("narrowing_conversion")
-const square_size : int = sqrt(board_size)
+const sqrt_board_size : int = sqrt(board_size)
 
 func _ready():
 	get_node("Line0/Cell0").grab_focus()
 	
 	_fill_field_diagonal()
 	
-	_fill_field(0, square_size)
+	_fill_field(0, sqrt_board_size)
 	
 	get_tree().call_group("cells", "update_text")
 	
@@ -25,7 +25,7 @@ func _ready():
 
 # as it is, you can fill one diagonal's squares randomly and it 100% would be valid sudoku
 func _fill_field_diagonal() -> void:
-	for i in range(0, board_size, square_size + 1):
+	for i in range(0, board_size, sqrt_board_size + 1):
 		var numbers = range(1, board_size+1)
 		numbers.shuffle()
 		var cells := _get_square(i)
@@ -62,12 +62,12 @@ func _get_square(square_number : int) -> Array[Cell]:
 	var cells : Array[Cell] = []
 	
 	@warning_ignore("integer_division")
-	var first_line_number = (square_number / square_size) * square_size
-	var first_cell_number = (square_number % square_size) * square_size
+	var first_line_number = (square_number / sqrt_board_size) * sqrt_board_size
+	var first_cell_number = (square_number % sqrt_board_size) * sqrt_board_size
 	
-	for line_number in range(first_line_number, first_line_number + square_size):
+	for line_number in range(first_line_number, first_line_number + sqrt_board_size):
 		var line = get_node("Line" + str(line_number))
-		for cell_number in range(first_cell_number, first_cell_number + square_size):
+		for cell_number in range(first_cell_number, first_cell_number + sqrt_board_size):
 			cells.push_back(line.get_node("Cell" + str(cell_number)))
 	
 	return cells
