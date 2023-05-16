@@ -14,9 +14,10 @@ func _ready():
 	get_node("Line0/Cell0").grab_focus()
 	
 	_fill_field_diagonal()
-	
+	# starting with first cell of second square
 	_fill_field(0, sqrt_board_size)
-	
+	_remove_cells(25)
+
 	get_tree().call_group("cells", "update_text")
 	
 	print(_validate())
@@ -49,14 +50,16 @@ func _fill_field(line : int, row : int) -> bool:
 	
 	for num in range(1, board_size + 1):
 		cell.numbers.push_back(num)
+
 		if _validate_for_one_cell(line, row):
 			if _fill_field(line, row + 1):
 				return true
+
 		cell.numbers.clear()
 	
 	# No valid value was found, so backtrack
 	return false
-	
+
 # GETTERS FOR SHAPES
 func _get_square(square_number : int) -> Array[Cell]:
 	var cells : Array[Cell] = []
@@ -124,9 +127,61 @@ func _validate() -> VALIDATE:
 
 func _validate_for_one_cell(line : int, row : int) -> bool:
 	@warning_ignore("integer_division")
-	var square_number = row / 3 + (line / 3) * 3
+	var square_number = row / sqrt_board_size + (line / sqrt_board_size) * sqrt_board_size
 	if  _is_valid_set(_get_line(line)) == VALIDATE.WRONG_SOLVED or\
 			_is_valid_set(_get_row(row)) == VALIDATE.WRONG_SOLVED or\
 			_is_valid_set(_get_square(square_number)) == VALIDATE.WRONG_SOLVED:
 				return false
 	return true
+
+var __solution_counter : int = 0
+func _is_unique_solution(line : int = 0, row : int = 0) -> bool:
+	# zeroing helping variable on the first call
+	if line == 0 and row == 0:
+		__solution_counter = 0
+
+	# if we reached the end
+	if line == board_size - 1 and row == board_size:
+		__solution_counter += 1
+		return __solution_counter <= 1
+	
+	# if we reached the end of a row
+	if row == board_size:
+		line += 1
+		row = 0
+	
+	var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
+	if cell.numbers.size() != 0:
+		return _is_unique_solution(line, row + 1)
+	
+	for num in range(1, board_size + 1):
+		cell.numbers.push_back(num)
+		if _validate_for_one_cell(line, row):
+			if !_is_unique_solution(line, row + 1):
+				cell.numbers.clear()
+				return false
+		cell.numbers.clear()
+	
+	# No valid value was found, so backtrack
+	return true
+
+func _remove_cells(how_much : int):
+	var removed : int = 0
+
+	var cells_array := []
+	for i in range(0, board_size):
+		for j in range(0, board_size):
+			cells_array.append([i, j])
+
+	cells_array.shuffle()
+	for cell_pos in cells_array:
+		var cell : Cell = get_node("Line%d/Cell%d" % cell_pos)
+
+		var number_in_cell : int = cell.numbers[0]
+		cell.numbers.clear()
+
+		if !_is_unique_solution():
+			cell.numbers.push_back(number_in_cell)
+		else:
+			removed += 1
+			if removed == how_much: return
