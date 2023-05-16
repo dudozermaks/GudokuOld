@@ -18,6 +18,7 @@ func _ready():
 	_fill_field(0, sqrt_board_size)
 	_remove_cells(25)
 
+	get_tree().call_group("cells", "lock_if_not_empty")
 	get_tree().call_group("cells", "update_text")
 	
 	print(_validate())

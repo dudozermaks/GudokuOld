@@ -3,11 +3,11 @@ class_name Cell
 
 var numbers : Array[int] = []
 
-func _ready():
-	pass
+var is_locked := false
+
 
 func _input(_event):
-	if !has_focus():
+	if !has_focus() or is_locked:
 		return;
 	for i in range(1, 10):
 		if Input.is_action_just_released(str(i)):
@@ -19,7 +19,6 @@ func _input(_event):
 		numbers.pop_back()
 
 	update_text()
-
 
 func update_text():
 	numbers.sort()
@@ -40,3 +39,7 @@ func update_text():
 		add_theme_font_size_override("font_size", big_font_size)
 	else:
 		remove_theme_font_size_override("font_size")
+
+func lock_if_not_empty():
+	if numbers.size() != 0:
+		is_locked = true
