@@ -7,7 +7,7 @@ var is_locked := false
 
 
 func _input(_event):
-	if !has_focus() or is_locked:
+	if !has_focus() or disabled:
 		return;
 	for i in range(1, 10):
 		if Input.is_action_just_released(str(i)):
@@ -40,6 +40,5 @@ func update_text():
 	else:
 		remove_theme_font_size_override("font_size")
 
-func lock_if_not_empty():
-	if numbers.size() != 0:
-		is_locked = true
+func disable_if_not_empty():
+	disabled = numbers.size() != 0
