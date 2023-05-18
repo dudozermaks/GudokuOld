@@ -38,4 +38,6 @@ func update_text():
 		remove_theme_font_size_override("font_size")
 
 func disable_if_not_empty():
-	disabled = numbers.size() != 0
+	if numbers.size() != 0:
+		disabled = true
+		focus_mode = Control.FOCUS_NONE
