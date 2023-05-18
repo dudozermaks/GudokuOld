@@ -3,9 +3,6 @@ class_name Cell
 
 var numbers : Array[int] = []
 
-var is_locked := false
-
-
 func _input(_event):
 	if !has_focus() or disabled:
 		return;
