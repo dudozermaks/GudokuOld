@@ -12,18 +12,14 @@ offset_right = 850.0
 offset_bottom = 850.0
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 0
-offset_right = 850.0
-offset_bottom = 850.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.513726, 0.647059, 0.596078, 1)
 
 [node name="Field" parent="Control" instance=ExtResource("1_u7bfg")]
 unique_name_in_owner = true
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 850.0
-offset_bottom = 850.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
