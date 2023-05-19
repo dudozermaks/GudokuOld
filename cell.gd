@@ -8,9 +8,13 @@ func _input(_event):
 		return;
 	for i in range(1, 10):
 		if Input.is_action_just_released(str(i)):
-			if i in numbers:
-				numbers.erase(i)
+			if Globals.is_pencil_active:
+				if i in numbers:
+					numbers.erase(i)
+				else:
+					numbers.push_back(i)
 			else:
+				numbers.clear()
 				numbers.push_back(i)
 	if (Input.is_action_pressed("erase")):
 		numbers.pop_back()
@@ -40,4 +44,5 @@ func update_text():
 func disable_if_not_empty():
 	if numbers.size() != 0:
 		disabled = true
+		
 		focus_mode = Control.FOCUS_NONE
