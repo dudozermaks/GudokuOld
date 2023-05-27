@@ -5,17 +5,25 @@ const board_size : int = 9
 const sqrt_board_size : int = sqrt(board_size)
 
 func _ready():
-	get_node("Line0/Cell0").grab_focus()
-
 	_generate_with_sudoku_generator()
+	_set_focus()
 
 	get_tree().call_group("cells", "disable_if_not_empty")
 	get_tree().call_group("cells", "update_text")
 
+func _set_focus():
+	for line in range(board_size):
+		for row in range(board_size):
+			var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
+			if cell.numbers.size() == 0:
+				cell.grab_focus()
+				return
+
+
 func _field_to_string() -> String:
 	var result := ""
-	for line in range(9):
-		for row in range(9):
+	for line in range(board_size):
+		for row in range(board_size):
 			var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
 			if cell.numbers.size() != 1:
 				result += "."
@@ -25,10 +33,10 @@ func _field_to_string() -> String:
 	return result
 
 func _string_to_field(string : String) -> void:
-	for line in range(9):
-		for row in range(9):
+	for line in range(board_size):
+		for row in range(board_size):
 			var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
-			var num : String = string[line*9 + row]
+			var num : String = string[line*board_size + row]
 			if num != ".":
 				cell.numbers.clear()
 				cell.numbers.push_back(int(num))
@@ -73,9 +81,9 @@ func _get_row(row_number : int) -> Array[Cell]:
 
 # VALIDATES
 func _is_unsolved() -> bool:
-	for i in range(0, board_size):
+	for i in range(board_size):
 		var line := get_node("Line" + str(i))
-		for j in range(0, board_size):
+		for j in range(board_size):
 			if line.get_node("Cell" + str(j)).numbers.size() != 1:
 				return true
 	return false
