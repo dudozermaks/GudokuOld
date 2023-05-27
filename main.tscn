@@ -1,17 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv2gprwqkre20"]
+[gd_scene load_steps=5 format=3 uid="uid://cv2gprwqkre20"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_566ac"]
+[ext_resource type="FontFile" uid="uid://eyhahop78114" path="res://Roboto/Roboto-Medium.ttf" id="1_jgr3j"]
 [ext_resource type="PackedScene" uid="uid://htk5qy2585bv" path="res://field.tscn" id="1_u7bfg"]
 
-[node name="Main" type="Node2D"]
+[sub_resource type="Theme" id="Theme_k5g8g"]
+default_font = ExtResource("1_jgr3j")
+default_font_size = 32
 
-[node name="Control" type="Control" parent="."]
-custom_minimum_size = Vector2(850, 850)
+[node name="Main" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 850.0
-offset_bottom = 850.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_k5g8g")
+script = ExtResource("1_566ac")
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +27,36 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.513726, 0.647059, 0.596078, 1)
 
-[node name="Field" parent="Control" instance=ExtResource("1_u7bfg")]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Field" parent="HBoxContainer" instance=ExtResource("1_u7bfg")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Check"
+
+[node name="CheckLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PencilLable" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Pencil: off"
+horizontal_alignment = 1
+
+[connection signal="button_up" from="HBoxContainer/VBoxContainer/CheckButton" to="." method="_on_is_solved_button_button_up"]

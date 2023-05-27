@@ -1,10 +1,4 @@
-extends VBoxContainer 
-
-enum VALIDATE{
-	WRONG_SOLVED,
-	RIGHT_SOLVED,
-	UNSOLVED
-}
+extends VBoxContainer
 
 const board_size : int = 9
 @warning_ignore("narrowing_conversion")
@@ -44,11 +38,11 @@ func generate_with_gdscript():
 	# starting with first cell of second square
 	_fill_field(0, sqrt_board_size)
 	_remove_cells(25)
-	assert(_validate() == VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + field_to_string())
+	assert(validate() == Globals.VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + field_to_string())
 
 func generate_with_sudoku_generator():
 	string_to_field($SudokuGenerator.generate())
-	assert(_validate() == VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + field_to_string())
+	assert(validate() == Globals.VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + field_to_string())
 	
 
 # FILLERS
@@ -121,7 +115,7 @@ func _get_row(row_number : int) -> Array[Cell]:
 	
 	return cells
 
-# VALIDATES
+# Globals.VALIDATES
 func _is_unsolved() -> bool:
 	for i in range(0, board_size):
 		var line := get_node("Line" + str(i))
@@ -130,35 +124,35 @@ func _is_unsolved() -> bool:
 				return true
 	return false
 
-func _is_valid_set(cell_set : Array[Cell]) -> VALIDATE:
+func _is_valid_set(cell_set : Array[Cell]) -> Globals.VALIDATE:
 	var numbers : Array[int] = []
 	
 	for cell in cell_set:
 		if cell.numbers.size() != 1: continue
 		if cell.numbers[0] in numbers:
-			return VALIDATE.WRONG_SOLVED
+			return Globals.VALIDATE.WRONG_SOLVED
 		
 		numbers.push_back(cell.numbers[0])
 	
-	return VALIDATE.RIGHT_SOLVED
+	return Globals.VALIDATE.RIGHT_SOLVED
 
-func _validate() -> VALIDATE:
+func validate() -> Globals.VALIDATE:
 	for i in range(0, board_size):
-		if  _is_valid_set(_get_line(i)) == VALIDATE.WRONG_SOLVED or\
-				_is_valid_set(_get_row(i)) == VALIDATE.WRONG_SOLVED or\
-				_is_valid_set(_get_square(i)) == VALIDATE.WRONG_SOLVED:
-					return VALIDATE.WRONG_SOLVED
+		if  _is_valid_set(_get_line(i)) == Globals.VALIDATE.WRONG_SOLVED or\
+				_is_valid_set(_get_row(i)) == Globals.VALIDATE.WRONG_SOLVED or\
+				_is_valid_set(_get_square(i)) == Globals.VALIDATE.WRONG_SOLVED:
+					return Globals.VALIDATE.WRONG_SOLVED
 	
 	if _is_unsolved():
-		return VALIDATE.UNSOLVED
-	return VALIDATE.RIGHT_SOLVED
+		return Globals.VALIDATE.UNSOLVED
+	return Globals.VALIDATE.RIGHT_SOLVED
 
 func _validate_for_one_cell(line : int, row : int) -> bool:
 	@warning_ignore("integer_division")
 	var square_number = row / sqrt_board_size + (line / sqrt_board_size) * sqrt_board_size
-	if  _is_valid_set(_get_line(line)) == VALIDATE.WRONG_SOLVED or\
-			_is_valid_set(_get_row(row)) == VALIDATE.WRONG_SOLVED or\
-			_is_valid_set(_get_square(square_number)) == VALIDATE.WRONG_SOLVED:
+	if  _is_valid_set(_get_line(line)) == Globals.VALIDATE.WRONG_SOLVED or\
+			_is_valid_set(_get_row(row)) == Globals.VALIDATE.WRONG_SOLVED or\
+			_is_valid_set(_get_square(square_number)) == Globals.VALIDATE.WRONG_SOLVED:
 				return false
 	return true
 
