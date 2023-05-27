@@ -2,7 +2,3 @@
 	path = sudoku_solver/godot-cpp
 	url = https://github.com/godotengine/godot-cpp
 	branch = 4.0
-[submodule "sudoku_solver2/godot-cpp"]
-	path = sudoku_solver2/godot-cpp
-	url = https://github.com/godotengine/godot-cpp
-	branch = 4.0
