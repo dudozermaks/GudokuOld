@@ -12,19 +12,46 @@ const sqrt_board_size : int = sqrt(board_size)
 
 func _ready():
 	get_node("Line0/Cell0").grab_focus()
-	
+
+	generate_with_sudoku_generator()
+
+	get_tree().call_group("cells", "disable_if_not_empty")
+	get_tree().call_group("cells", "update_text")
+
+func field_to_string() -> String:
+	var result := ""
+	for line in range(9):
+		for row in range(9):
+			var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
+			if cell.numbers.size() != 1:
+				result += "."
+			else:
+				result += str(cell.numbers[0])
+
+	return result
+
+func string_to_field(string : String) -> void:
+	for line in range(9):
+		for row in range(9):
+			var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
+			var num : String = string[line*9 + row]
+			if num != ".":
+				cell.numbers.clear()
+				cell.numbers.push_back(int(num))
+
+func generate_with_gdscript():
 	_fill_field_diagonal()
 	# starting with first cell of second square
 	_fill_field(0, sqrt_board_size)
 	_remove_cells(25)
+	assert(_validate() == VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + field_to_string())
 
-	get_tree().call_group("cells", "disable_if_not_empty")
-	get_tree().call_group("cells", "update_text")
+func generate_with_sudoku_generator():
+	string_to_field($SudokuGenerator.generate())
+	assert(_validate() == VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + field_to_string())
 	
-	print(_validate())
 
 # FILLERS
-
 # as it is, you can fill one diagonal's squares randomly and it 100% would be valid sudoku
 func _fill_field_diagonal() -> void:
 	for i in range(0, board_size, sqrt_board_size + 1):

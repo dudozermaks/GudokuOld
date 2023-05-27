@@ -352,3 +352,5 @@ layout_mode = 2
 
 [node name="Cell8" parent="Line8" instance=ExtResource("1_2ph6y")]
 layout_mode = 2
+
+[node name="SudokuGenerator" type="SudokuGenerator" parent="."]
