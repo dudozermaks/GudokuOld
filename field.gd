@@ -7,12 +7,12 @@ const sqrt_board_size : int = sqrt(board_size)
 func _ready():
 	get_node("Line0/Cell0").grab_focus()
 
-	generate_with_sudoku_generator()
+	_generate_with_sudoku_generator()
 
 	get_tree().call_group("cells", "disable_if_not_empty")
 	get_tree().call_group("cells", "update_text")
 
-func field_to_string() -> String:
+func _field_to_string() -> String:
 	var result := ""
 	for line in range(9):
 		for row in range(9):
@@ -24,7 +24,7 @@ func field_to_string() -> String:
 
 	return result
 
-func string_to_field(string : String) -> void:
+func _string_to_field(string : String) -> void:
 	for line in range(9):
 		for row in range(9):
 			var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
@@ -33,54 +33,10 @@ func string_to_field(string : String) -> void:
 				cell.numbers.clear()
 				cell.numbers.push_back(int(num))
 
-func generate_with_gdscript():
-	_fill_field_diagonal()
-	# starting with first cell of second square
-	_fill_field(0, sqrt_board_size)
-	_remove_cells(25)
-	assert(validate() == Globals.VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + field_to_string())
-
-func generate_with_sudoku_generator():
-	string_to_field($SudokuGenerator.generate())
-	assert(validate() == Globals.VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + field_to_string())
+func _generate_with_sudoku_generator():
+	_string_to_field($SudokuGenerator.generate())
+	assert(validate() == Globals.VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + _field_to_string())
 	
-
-# FILLERS
-# as it is, you can fill one diagonal's squares randomly and it 100% would be valid sudoku
-func _fill_field_diagonal() -> void:
-	for i in range(0, board_size, sqrt_board_size + 1):
-		var numbers = range(1, board_size+1)
-		numbers.shuffle()
-		var cells := _get_square(i)
-		for cell in cells:
-			cell.numbers.push_back(numbers.back())
-			numbers.pop_back()
-
-func _fill_field(line : int, row : int) -> bool:
-	# if we reached the end
-	if line == board_size - 1 and row == board_size:
-		return true
-	
-	# if we reached the end of a row
-	if row == board_size:
-		line += 1
-		row = 0
-	
-	var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
-	if cell.numbers.size() != 0:
-		return _fill_field(line, row + 1)
-	
-	for num in range(1, board_size + 1):
-		cell.numbers.push_back(num)
-
-		if _validate_for_one_cell(line, row):
-			if _fill_field(line, row + 1):
-				return true
-
-		cell.numbers.clear()
-	
-	# No valid value was found, so backtrack
-	return false
 
 # GETTERS FOR SHAPES
 func _get_square(square_number : int) -> Array[Cell]:
@@ -115,7 +71,7 @@ func _get_row(row_number : int) -> Array[Cell]:
 	
 	return cells
 
-# Globals.VALIDATES
+# VALIDATES
 func _is_unsolved() -> bool:
 	for i in range(0, board_size):
 		var line := get_node("Line" + str(i))
@@ -146,64 +102,3 @@ func validate() -> Globals.VALIDATE:
 	if _is_unsolved():
 		return Globals.VALIDATE.UNSOLVED
 	return Globals.VALIDATE.RIGHT_SOLVED
-
-func _validate_for_one_cell(line : int, row : int) -> bool:
-	@warning_ignore("integer_division")
-	var square_number = row / sqrt_board_size + (line / sqrt_board_size) * sqrt_board_size
-	if  _is_valid_set(_get_line(line)) == Globals.VALIDATE.WRONG_SOLVED or\
-			_is_valid_set(_get_row(row)) == Globals.VALIDATE.WRONG_SOLVED or\
-			_is_valid_set(_get_square(square_number)) == Globals.VALIDATE.WRONG_SOLVED:
-				return false
-	return true
-
-var __solution_counter : int = 0
-func _is_unique_solution(line : int = 0, row : int = 0) -> bool:
-	# zeroing helping variable on the first call
-	if line == 0 and row == 0:
-		__solution_counter = 0
-
-	# if we reached the end
-	if line == board_size - 1 and row == board_size:
-		__solution_counter += 1
-		return __solution_counter <= 1
-	
-	# if we reached the end of a row
-	if row == board_size:
-		line += 1
-		row = 0
-	
-	var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
-	if cell.numbers.size() != 0:
-		return _is_unique_solution(line, row + 1)
-	
-	for num in range(1, board_size + 1):
-		cell.numbers.push_back(num)
-		if _validate_for_one_cell(line, row):
-			if !_is_unique_solution(line, row + 1):
-				cell.numbers.clear()
-				return false
-		cell.numbers.clear()
-	
-	# No valid value was found, so backtrack
-	return true
-
-func _remove_cells(how_much : int):
-	var removed : int = 0
-
-	var cells_array := []
-	for i in range(0, board_size):
-		for j in range(0, board_size):
-			cells_array.append([i, j])
-
-	cells_array.shuffle()
-	for cell_pos in cells_array:
-		var cell : Cell = get_node("Line%d/Cell%d" % cell_pos)
-
-		var number_in_cell : int = cell.numbers[0]
-		cell.numbers.clear()
-
-		if !_is_unique_solution():
-			cell.numbers.push_back(number_in_cell)
-		else:
-			removed += 1
-			if removed == how_much: return
