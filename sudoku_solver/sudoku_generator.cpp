@@ -14,6 +14,7 @@ SudokuGenerator::SudokuGenerator(){
 
   options.pencilmark = false;
   options.max_puzzles = 1;
+  options.solver = 0;
 
   generator.SetOptions(options);
   generator.InitEmpty();
