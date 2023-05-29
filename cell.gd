@@ -2,6 +2,7 @@ extends Button
 class_name Cell
 
 var numbers : Array[int] = []
+var is_small : bool = false
 
 func _input(_event):
 	if !has_focus() or disabled:
@@ -9,11 +10,13 @@ func _input(_event):
 	for i in range(1, 10):
 		if Input.is_action_just_released(str(i)):
 			if Globals.is_pencil_active:
+				is_small = true
 				if i in numbers:
 					numbers.erase(i)
 				else:
 					numbers.push_back(i)
 			else:
+				is_small = false
 				numbers.clear()
 				numbers.push_back(i)
 	if (Input.is_action_pressed("erase")):
@@ -35,7 +38,7 @@ func update_text():
 	if text.length() >= 2:
 		text = text.left(-2)
 
-	if text.length() == 1:
+	if !is_small:
 		var big_font_size := theme.get_font_size("big_font_size", "Button")
 		add_theme_font_size_override("font_size", big_font_size)
 	else:
