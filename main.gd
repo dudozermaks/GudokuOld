@@ -1,10 +1,21 @@
 extends Control
 
-
+var time : float = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_update_pencil_lable()
 	Globals.pencil_changed.connect(_update_pencil_lable)
+
+func _process(delta):
+	_update_time(delta)
+
+func _update_time(delta : float):
+	time += delta
+	var minutes := time / 60
+	var seconds := fmod(time, 60)
+	# var milliseconds := time * 100
+	%TimerLabel.text = "%02d:%02d" % [minutes, seconds]
+	
 
 func _update_pencil_lable():
 	%PencilLable.text = "Pencil: "
