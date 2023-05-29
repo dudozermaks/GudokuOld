@@ -68,4 +68,9 @@ layout_mode = 2
 text = "00:00"
 horizontal_alignment = 1
 
-[connection signal="button_up" from="HBoxContainer/VBoxContainer/CheckButton" to="." method="_on_is_solved_button_button_up"]
+[node name="GenerateNewButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Generate new"
+
+[connection signal="button_up" from="HBoxContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_up"]
+[connection signal="button_up" from="HBoxContainer/VBoxContainer/GenerateNewButton" to="." method="_on_generate_new_button_up"]

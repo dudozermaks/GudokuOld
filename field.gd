@@ -5,11 +5,7 @@ const board_size : int = 9
 const sqrt_board_size : int = sqrt(board_size)
 
 func _ready():
-	_generate_with_sudoku_generator()
-	_set_focus()
-
-	get_tree().call_group("cells", "disable_if_not_empty")
-	get_tree().call_group("cells", "update_text")
+	generate_new_field()
 
 func _set_focus():
 	for line in range(board_size):
@@ -37,14 +33,18 @@ func _string_to_field(string : String) -> void:
 		for row in range(board_size):
 			var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
 			var num : String = string[line*board_size + row]
+			cell.numbers.clear()
 			if num != ".":
-				cell.numbers.clear()
 				cell.numbers.push_back(int(num))
 
-func _generate_with_sudoku_generator():
+func generate_new_field():
 	_string_to_field($SudokuGenerator.generate())
 	assert(validate() == Globals.VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + _field_to_string())
-	
+
+	get_tree().call_group("cells", "disable_if_not_empty")
+	get_tree().call_group("cells", "update_text")
+
+	_set_focus()
 
 # GETTERS FOR SHAPES
 func _get_square(square_number : int) -> Array[Cell]:

@@ -6,7 +6,7 @@
 [node name="Cell" type="Button" groups=["cells"]]
 custom_minimum_size = Vector2(77, 77)
 anchors_preset = -1
-anchor_right = 0.0905882
+anchor_right = 0.0726415
 anchor_bottom = 0.0905882
 theme = ExtResource("1_msv31")
 clip_text = true

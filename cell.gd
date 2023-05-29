@@ -47,5 +47,7 @@ func update_text():
 func disable_if_not_empty():
 	if numbers.size() != 0:
 		disabled = true
-		
 		focus_mode = Control.FOCUS_NONE
+	else:
+		disabled = false
+		focus_mode = Control.FOCUS_ALL

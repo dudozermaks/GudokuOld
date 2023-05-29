@@ -24,7 +24,7 @@ func _update_pencil_lable():
 	else:
 		%PencilLable.text += "off"
 
-func _on_is_solved_button_button_up():
+func _on_check_button_up():
 	var is_solved = %Field.validate()
 
 	if is_solved == Globals.VALIDATE.UNSOLVED:
@@ -47,3 +47,6 @@ func _on_is_solved_button_button_up():
 			%CheckLabel.visible = false
 	)
 
+func _on_generate_new_button_up():
+	%Field.generate_new_field()
+	time = 0
