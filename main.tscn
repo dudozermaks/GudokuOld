@@ -60,8 +60,8 @@ text = "Check"
 
 [node name="CheckLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
+text = "Unsolved"
 horizontal_alignment = 1
 
 [node name="PencilButton" type="CheckButton" parent="HBoxContainer/VBoxContainer"]

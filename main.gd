@@ -4,11 +4,15 @@ var time : float
 var timer_stop : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_init_vars()
+	_create_new_field()
 
-func _init_vars():
+
+func _create_new_field():
 	time = 0
 	timer_stop = false
+
+	%Field.generate_new_field()
+	%CheckLabel.visible = false
 
 func _process(delta):
 	_update_time(delta)
@@ -46,9 +50,9 @@ func _on_check_button_up():
 			%CheckLabel.visible = false
 	)
 
+
 func _on_generate_new_button_up():
-	%Field.generate_new_field()
-	_init_vars()
+	_create_new_field()
 
 
 func _on_field_all_cells_completed():
