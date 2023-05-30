@@ -7,7 +7,7 @@ const sqrt_board_size : int = sqrt(board_size)
 signal all_cells_completed
 
 func _ready():
-	# generate_new_field()
+	generate_new_field()
 
 	var cells = get_tree().get_nodes_in_group("cells")
 	for cell in cells:
