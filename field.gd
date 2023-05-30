@@ -4,8 +4,18 @@ const board_size : int = 9
 @warning_ignore("narrowing_conversion")
 const sqrt_board_size : int = sqrt(board_size)
 
+signal all_cells_completed
+
 func _ready():
-	generate_new_field()
+	# generate_new_field()
+
+	var cells = get_tree().get_nodes_in_group("cells")
+	for cell in cells:
+		cell.text_updated.connect(_is_all_cells_completed)
+
+	# _string_to_field("417369825632158947958724316825437169791586432346912758289643571573291684164875293")
+	# get_tree().call_group("cells", "disable_if_not_empty")
+	# get_tree().call_group("cells", "update_text")
 
 func _set_focus():
 	for line in range(board_size):
@@ -110,3 +120,10 @@ func validate() -> Globals.VALIDATE:
 	if _is_unsolved():
 		return Globals.VALIDATE.UNSOLVED
 	return Globals.VALIDATE.RIGHT_SOLVED
+
+func _is_all_cells_completed():
+	var cells = get_tree().get_nodes_in_group("cells")
+	for cell in cells:
+		if cell.numbers.size() != 1 or cell.is_small:
+			return;
+	emit_signal("all_cells_completed")

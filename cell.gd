@@ -4,6 +4,8 @@ class_name Cell
 var numbers : Array[int] = []
 var is_small : bool = false
 
+signal text_updated
+
 func _input(_event):
 	if !has_focus() or disabled:
 		return;
@@ -43,6 +45,8 @@ func update_text():
 		add_theme_font_size_override("font_size", big_font_size)
 	else:
 		remove_theme_font_size_override("font_size")
+	
+	emit_signal("text_updated")
 
 func disable_if_not_empty():
 	if numbers.size() != 0:
