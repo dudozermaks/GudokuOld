@@ -5,8 +5,6 @@ var timer_stop : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_init_vars()
-	_update_pencil_lable()
-	Globals.pencil_changed.connect(_update_pencil_lable)
 
 func _init_vars():
 	time = 0
@@ -22,14 +20,6 @@ func _update_time(delta : float):
 	var seconds := fmod(time, 60)
 	# var milliseconds := time * 100
 	%TimerLabel.text = "%02d:%02d" % [minutes, seconds]
-	
-
-func _update_pencil_lable():
-	%PencilLable.text = "Pencil: "
-	if Globals.is_pencil_active:
-		%PencilLable.text += "on"
-	else:
-		%PencilLable.text += "off"
 
 func _on_check_button_up():
 	var is_solved = %Field.validate()
@@ -63,3 +53,7 @@ func _on_generate_new_button_up():
 
 func _on_field_all_cells_completed():
 	%CheckButton.emit_signal("button_up")
+
+
+func _on_pencil_button_toggled(button_pressed):
+	Globals.is_pencil_active = button_pressed
