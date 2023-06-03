@@ -7,3 +7,4 @@ enum VALIDATE{
 }
 
 var is_pencil_active : bool = false
+@onready var sudoku_generator : SudokuGenerator = SudokuGenerator.new()

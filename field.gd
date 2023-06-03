@@ -46,7 +46,7 @@ func _string_to_field(string : String) -> void:
 				cell.numbers.push_back(int(num))
 
 func generate_new_field():
-	_string_to_field($SudokuGenerator.generate())
+	_string_to_field(Globals.sudoku_generator.generate())
 	assert(validate() == Globals.VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + _field_to_string())
 
 	get_tree().call_group("cells", "disable_if_not_empty")

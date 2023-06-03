@@ -28,81 +28,6 @@
   "arguments": [
    "g++",
    "-o",
-   "tdoku/generator.os",
-   "-c",
-   "-std=c++17",
-   "-fPIC",
-   "-Wwrite-strings",
-   "-m64",
-   "-march=x86-64",
-   "-O2",
-   "-fPIC",
-   "-DDEBUG_ENABLED",
-   "-DDEBUG_METHODS_ENABLED",
-   "-Igodot-cpp/gdextension",
-   "-Igodot-cpp/include",
-   "-Igodot-cpp/gen/include",
-   "-I.",
-   "-Itdoku",
-   "tdoku/generator.cc"
-  ],
-  "file": "tdoku/generator.cc"
- },
- {
-  "directory": "/home/maks/shit/work/godot/4.x/gudoku/sudoku_solver",
-  "arguments": [
-   "g++",
-   "-o",
-   "tdoku/other_minisat.os",
-   "-c",
-   "-std=c++17",
-   "-fPIC",
-   "-Wwrite-strings",
-   "-m64",
-   "-march=x86-64",
-   "-O2",
-   "-fPIC",
-   "-DDEBUG_ENABLED",
-   "-DDEBUG_METHODS_ENABLED",
-   "-Igodot-cpp/gdextension",
-   "-Igodot-cpp/include",
-   "-Igodot-cpp/gen/include",
-   "-I.",
-   "-Itdoku",
-   "tdoku/other_minisat.cc"
-  ],
-  "file": "tdoku/other_minisat.cc"
- },
- {
-  "directory": "/home/maks/shit/work/godot/4.x/gudoku/sudoku_solver",
-  "arguments": [
-   "g++",
-   "-o",
-   "tdoku/solver_dpll_triad_simd.os",
-   "-c",
-   "-std=c++17",
-   "-fPIC",
-   "-Wwrite-strings",
-   "-m64",
-   "-march=x86-64",
-   "-O2",
-   "-fPIC",
-   "-DDEBUG_ENABLED",
-   "-DDEBUG_METHODS_ENABLED",
-   "-Igodot-cpp/gdextension",
-   "-Igodot-cpp/include",
-   "-Igodot-cpp/gen/include",
-   "-I.",
-   "-Itdoku",
-   "tdoku/solver_dpll_triad_simd.cc"
-  ],
-  "file": "tdoku/solver_dpll_triad_simd.cc"
- },
- {
-  "directory": "/home/maks/shit/work/godot/4.x/gudoku/sudoku_solver",
-  "arguments": [
-   "g++",
-   "-o",
    "godot-cpp/gen/src/classes/web_rtc_data_channel_extension.linux.template_debug.x86_64.o",
    "-c",
    "-std=c++17",
@@ -21271,31 +21196,6 @@
   "arguments": [
    "g++",
    "-o",
-   "tdoku/util.os",
-   "-c",
-   "-std=c++17",
-   "-fPIC",
-   "-Wwrite-strings",
-   "-m64",
-   "-march=x86-64",
-   "-O2",
-   "-fPIC",
-   "-DDEBUG_ENABLED",
-   "-DDEBUG_METHODS_ENABLED",
-   "-Igodot-cpp/gdextension",
-   "-Igodot-cpp/include",
-   "-Igodot-cpp/gen/include",
-   "-I.",
-   "-Itdoku",
-   "tdoku/util.cc"
-  ],
-  "file": "tdoku/util.cc"
- },
- {
-  "directory": "/home/maks/shit/work/godot/4.x/gudoku/sudoku_solver",
-  "arguments": [
-   "g++",
-   "-o",
    "register_types.os",
    "-c",
    "-std=c++17",
@@ -21310,8 +21210,6 @@
    "-Igodot-cpp/gdextension",
    "-Igodot-cpp/include",
    "-Igodot-cpp/gen/include",
-   "-I.",
-   "-Itdoku",
    "register_types.cpp"
   ],
   "file": "register_types.cpp"
@@ -21335,8 +21233,6 @@
    "-Igodot-cpp/gdextension",
    "-Igodot-cpp/include",
    "-Igodot-cpp/gen/include",
-   "-I.",
-   "-Itdoku",
    "sudoku_generator.cpp"
   ],
   "file": "sudoku_generator.cpp"

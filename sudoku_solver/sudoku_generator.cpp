@@ -10,18 +10,9 @@ void SudokuGenerator::_bind_methods(){
 }
 
 SudokuGenerator::SudokuGenerator(){
-  GeneratorOptions options{};
-
-  options.pencilmark = false;
-  options.max_puzzles = 1;
-  options.solver = 0;
-
-  generator.SetOptions(options);
-  generator.InitEmpty();
 }
+
 String SudokuGenerator::generate(){
-  std::string result = generator.Generate();
-  UtilityFunctions::print(("Generated sudoku field: " + result).c_str());
-  return result.c_str();
+  return "";
 }
 SudokuGenerator::~SudokuGenerator(){}
