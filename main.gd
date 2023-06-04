@@ -13,6 +13,9 @@ func _create_new_field():
 
 	%Field.generate_new_field()
 	%CheckLabel.visible = false
+	%DifficultyLabel.text = "Difficulty: "
+	%DifficultyLabel.text += str(Globals.sudoku_generator.get_difficulty())
+
 
 func _process(delta):
 	_update_time(delta)
@@ -44,11 +47,12 @@ func _on_check_button_up():
 
 	%CheckLabel.visible = true
 
-	var hide_label_timer = get_tree().create_timer(10)
-	hide_label_timer.timeout.connect(
-		func ():
-			%CheckLabel.visible = false
-	)
+	if is_solved != Globals.VALIDATE.RIGHT_SOLVED:
+		var hide_label_timer = get_tree().create_timer(10)
+		hide_label_timer.timeout.connect(
+			func ():
+				%CheckLabel.visible = false
+		)
 
 
 func _on_generate_new_button_up():

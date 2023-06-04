@@ -2,3 +2,6 @@
 	path = sudoku_solver/godot-cpp
 	url = https://github.com/godotengine/godot-cpp
 	branch = 4.0
+[submodule "sudoku_solver/lib"]
+	path = sudoku_solver/lib
+	url = https://github.com/dudozermaks/vaithak-Sudoku-Generator.git

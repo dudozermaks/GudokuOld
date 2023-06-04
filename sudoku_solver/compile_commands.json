@@ -21210,6 +21210,8 @@
    "-Igodot-cpp/gdextension",
    "-Igodot-cpp/include",
    "-Igodot-cpp/gen/include",
+   "-I.",
+   "-Ilib",
    "register_types.cpp"
   ],
   "file": "register_types.cpp"
@@ -21233,8 +21235,35 @@
    "-Igodot-cpp/gdextension",
    "-Igodot-cpp/include",
    "-Igodot-cpp/gen/include",
+   "-I.",
+   "-Ilib",
    "sudoku_generator.cpp"
   ],
   "file": "sudoku_generator.cpp"
+ },
+ {
+  "directory": "/home/maks/shit/work/godot/4.x/gudoku/sudoku_solver",
+  "arguments": [
+   "g++",
+   "-o",
+   "lib/sudokuGen.os",
+   "-c",
+   "-std=c++17",
+   "-fPIC",
+   "-Wwrite-strings",
+   "-m64",
+   "-march=x86-64",
+   "-O2",
+   "-fPIC",
+   "-DDEBUG_ENABLED",
+   "-DDEBUG_METHODS_ENABLED",
+   "-Igodot-cpp/gdextension",
+   "-Igodot-cpp/include",
+   "-Igodot-cpp/gen/include",
+   "-I.",
+   "-Ilib",
+   "lib/sudokuGen.cpp"
+  ],
+  "file": "lib/sudokuGen.cpp"
  }
 ]

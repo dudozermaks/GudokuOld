@@ -73,6 +73,12 @@ layout_mode = 2
 text = "00:00"
 horizontal_alignment = 1
 
+[node name="DifficultyLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Difficulty: 0000"
+horizontal_alignment = 1
+
 [node name="GenerateNewButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2

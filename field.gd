@@ -30,7 +30,7 @@ func _field_to_string() -> String:
 		for row in range(board_size):
 			var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
 			if cell.numbers.size() != 1:
-				result += "."
+				result += "0"
 			else:
 				result += str(cell.numbers[0])
 
@@ -42,7 +42,7 @@ func _string_to_field(string : String) -> void:
 			var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
 			var num : String = string[line*board_size + row]
 			cell.numbers.clear()
-			if num != ".":
+			if num != "." and num != "0":
 				cell.numbers.push_back(int(num))
 
 func generate_new_field():
