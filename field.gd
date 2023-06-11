@@ -52,7 +52,43 @@ func generate_new_field():
 	get_tree().call_group("cells", "disable_if_not_empty")
 	get_tree().call_group("cells", "update_text")
 
+	# _set_neighbors_for(Vector2i(0, 0))
+	_set_all_cells_neighbors()
 	_set_focus()
+
+# CELL NEIGHBORS SETTERS
+func _set_all_cells_neighbors():
+	for y in range(0, 9):
+		for x in range(0, 9):
+			if !get_node("Line%d/Cell%d" % [y, x]).disabled:
+				_set_neighbors_for(Vector2i(x, y))
+
+func _set_neighbors_for(cell_pos : Vector2i):
+	var cell : Cell = get_node("Line%d/Cell%d" % [cell_pos.y, cell_pos.x])
+
+	for y in range(cell_pos.y - 1, 0, -1):
+		if (_set_neighbor_if_possible(cell, Vector2i(cell_pos.x, y), SIDE_TOP)):
+			break
+
+	for y in range(cell_pos.y + 1, 9):
+		if (_set_neighbor_if_possible(cell, Vector2i(cell_pos.x, y), SIDE_BOTTOM)):
+			break;
+
+	for x in range(cell_pos.x - 1, 0, -1):
+		if (_set_neighbor_if_possible(cell, Vector2i(x, cell_pos.y), SIDE_LEFT)):
+			break;
+
+	for x in range(cell_pos.x + 1, 9):
+		if (_set_neighbor_if_possible(cell, Vector2i(x, cell_pos.y), SIDE_RIGHT)):
+			break;
+
+func _set_neighbor_if_possible(cell : Cell, neighbor_pos : Vector2i, side : Side) -> bool:
+	var neighbor : Cell = get_node("Line%d/Cell%d" % [neighbor_pos.y, neighbor_pos.x])
+	if (!neighbor.disabled):
+		cell.set_focus_neighbor(side, neighbor.get_path())
+		return true
+	return false
+
 
 # GETTERS FOR SHAPES
 func _get_square(square_number : int) -> Array[Cell]:
