@@ -55,3 +55,8 @@ func disable_if_not_empty():
 	else:
 		disabled = false
 		focus_mode = Control.FOCUS_ALL
+
+func clear_if_not_disabled():
+	if !disabled:
+		numbers.clear()
+		update_text()

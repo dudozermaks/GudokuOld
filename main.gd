@@ -65,3 +65,7 @@ func _on_field_all_cells_completed():
 
 func _on_pencil_button_toggled(button_pressed):
 	Globals.is_pencil_active = button_pressed
+
+
+func _on_clear_button_button_up():
+	get_tree().call_group("cells", "clear_if_not_disabled")

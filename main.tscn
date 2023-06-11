@@ -59,6 +59,17 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Unsolved"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GenerateNewButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Generate new"
+
+[node name="ClearButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Clear"
 
 [node name="PencilButton" type="CheckButton" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -79,12 +90,8 @@ layout_mode = 2
 text = "Difficulty: 0000"
 horizontal_alignment = 1
 
-[node name="GenerateNewButton" type="Button" parent="HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Generate new"
-
 [connection signal="all_cells_completed" from="HBoxContainer/Field" to="." method="_on_field_all_cells_completed"]
 [connection signal="button_up" from="HBoxContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_up"]
-[connection signal="toggled" from="HBoxContainer/VBoxContainer/PencilButton" to="." method="_on_pencil_button_toggled"]
 [connection signal="button_up" from="HBoxContainer/VBoxContainer/GenerateNewButton" to="." method="_on_generate_new_button_up"]
+[connection signal="button_up" from="HBoxContainer/VBoxContainer/ClearButton" to="." method="_on_clear_button_button_up"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/PencilButton" to="." method="_on_pencil_button_toggled"]
