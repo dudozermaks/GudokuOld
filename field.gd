@@ -15,10 +15,13 @@ func _ready():
 	# get_tree().call_group("cells", "disable_if_not_empty")
 	# get_tree().call_group("cells", "update_text")
 
-func _set_focus():
+func _get_cell(line : int, row : int) -> Cell:
+	return get_node("Line%d/Cell%d" % [line, row])
+
+func _set_focus() -> void:
 	for line in range(board_size):
 		for row in range(board_size):
-			var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
+			var cell := _get_cell(line, row)
 			if cell.numbers.size() == 0:
 				cell.grab_focus()
 				return
@@ -28,7 +31,7 @@ func _field_to_string() -> String:
 	var result := ""
 	for line in range(board_size):
 		for row in range(board_size):
-			var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
+			var cell := _get_cell(line, row)
 			if cell.numbers.size() != 1:
 				result += "0"
 			else:
@@ -39,34 +42,39 @@ func _field_to_string() -> String:
 func _string_to_field(string : String) -> void:
 	for line in range(board_size):
 		for row in range(board_size):
-			var cell : Cell = get_node("Line%d/Cell%d" % [line, row])
+			var cell = _get_cell(line, row)
 			var num : String = string[line*board_size + row]
 			cell.numbers.clear()
 			if num != "." and num != "0":
 				cell.numbers.push_back(int(num))
 
-func generate_new_field():
+func generate_new_field() -> void:
 	_string_to_field(Globals.sudoku_generator.generate())
 	assert(validate() == Globals.VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + _field_to_string())
 
 	get_tree().call_group("cells", "disable_if_not_empty")
 	get_tree().call_group("cells", "update_text")
 
-	# _set_neighbors_for(Vector2i(0, 0))
 	_set_all_cells_neighbors()
 	_set_focus()
 
 # CELL NEIGHBORS SETTERS
-func _set_all_cells_neighbors():
+func _set_all_cells_neighbors() -> void:
 	for y in range(0, 9):
 		for x in range(0, 9):
-			if !get_node("Line%d/Cell%d" % [y, x]).disabled:
+			if !_get_cell(y, x).disabled:
 				_set_neighbors_for(Vector2i(x, y))
 
-func _set_neighbors_for(cell_pos : Vector2i):
-	var cell : Cell = get_node("Line%d/Cell%d" % [cell_pos.y, cell_pos.x])
+func _set_neighbors_for(cell_pos : Vector2i) -> void:
+	var cell := _get_cell(cell_pos.y, cell_pos.x)
 
-	for y in range(cell_pos.y - 1, 0, -1):
+	# set cell neighbor to itself
+	cell.set_focus_neighbor(SIDE_TOP, cell.get_path())
+	cell.set_focus_neighbor(SIDE_BOTTOM, cell.get_path())
+	cell.set_focus_neighbor(SIDE_LEFT, cell.get_path())
+	cell.set_focus_neighbor(SIDE_RIGHT, cell.get_path())
+
+	for y in range(cell_pos.y - 1, -1, -1):
 		if (_set_neighbor_if_possible(cell, Vector2i(cell_pos.x, y), SIDE_TOP)):
 			break
 
@@ -74,7 +82,7 @@ func _set_neighbors_for(cell_pos : Vector2i):
 		if (_set_neighbor_if_possible(cell, Vector2i(cell_pos.x, y), SIDE_BOTTOM)):
 			break;
 
-	for x in range(cell_pos.x - 1, 0, -1):
+	for x in range(cell_pos.x - 1, -1, -1):
 		if (_set_neighbor_if_possible(cell, Vector2i(x, cell_pos.y), SIDE_LEFT)):
 			break;
 
@@ -83,7 +91,8 @@ func _set_neighbors_for(cell_pos : Vector2i):
 			break;
 
 func _set_neighbor_if_possible(cell : Cell, neighbor_pos : Vector2i, side : Side) -> bool:
-	var neighbor : Cell = get_node("Line%d/Cell%d" % [neighbor_pos.y, neighbor_pos.x])
+	var neighbor := _get_cell(neighbor_pos.y, neighbor_pos.x)
+
 	if (!neighbor.disabled):
 		cell.set_focus_neighbor(side, neighbor.get_path())
 		return true
