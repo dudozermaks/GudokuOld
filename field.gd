@@ -15,7 +15,13 @@ func _ready():
 	# get_tree().call_group("cells", "disable_if_not_empty")
 	# get_tree().call_group("cells", "update_text")
 
-func save_to_file(name : String = "user://save1.sudoku") -> void:
+#FIXME when loading from file all user cells are small
+# possible solution: new string with cells state:
+# 0 - disabled
+# 1 - normal
+# 2 - small
+# this method allows use only one string, both contain initial_cells and user_cells
+func save_to_file(filename : String = "user://save1.sudoku") -> void:
 	# size is 9*9=81
 	var initial_cells : String = ""
 	# size is 9*9*9=729 (because of pencilmarks)
@@ -32,13 +38,58 @@ func save_to_file(name : String = "user://save1.sudoku") -> void:
 				initial_cells += "."
 				user_cells += cell.get_as_long_string()
 
-	var file := FileAccess.open(name, FileAccess.WRITE)
+	var file := FileAccess.open(filename, FileAccess.WRITE)
 
 	file.store_line(initial_cells)
 	file.store_line(user_cells)
 
 	print("Saved to file at: " + file.get_path_absolute())
 	
+
+func load_from_file(filename : String = "user://save1.sudoku") -> void:
+	var file := FileAccess.open(filename, FileAccess.READ)
+
+	var initial_cells : String = file.get_line()
+	var user_cells : String = file.get_line()
+	print(initial_cells)
+	print(user_cells)
+
+	var error_msg : String = "Can't load file! Path:" + file.get_path_absolute()
+
+	# check data
+	if initial_cells.length() != 9*9 or\
+		user_cells.length() != 9*9*9:
+			print(error_msg)
+			print("Wrong string size")
+			return
+	
+	for c in initial_cells:
+		if c == ".":
+			continue
+		if !c.is_valid_int():
+			print(error_msg)
+			print("String contains foreign characters")
+			return
+
+
+	for line in range(0, 9):
+		for row in range(0, 9):
+			var cell : Cell = _get_cell(line, row)
+			cell.reset()
+			var pos_at_string : int = line*9 + row
+
+			if initial_cells[pos_at_string] != ".":
+				cell.numbers.push_back(initial_cells[pos_at_string].to_int())
+				cell.disabled = true
+			else:
+				cell.is_small = true
+				for i in range(pos_at_string*9, pos_at_string*9 + 9):
+					if user_cells[i] != ".":
+						cell.numbers.push_back(user_cells[i].to_int())
+
+	init_field()
+	print("Loaded file from: " + file.get_path_absolute())
+
 
 func _get_cell(line : int, row : int) -> Cell:
 	return get_node("Line%d/Cell%d" % [line, row])
@@ -68,16 +119,18 @@ func string_to_field(string : String) -> void:
 	for line in range(board_size):
 		for row in range(board_size):
 			var cell = _get_cell(line, row)
+			cell.reset()
 			var num : String = string[line*board_size + row]
-			cell.numbers.clear()
 			if num != "." and num != "0":
 				cell.numbers.push_back(int(num))
 
 func generate_new_field() -> void:
 	string_to_field(Globals.sudoku_generator.generate())
 	assert(validate() == Globals.VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + field_to_string())
-
 	get_tree().call_group("cells", "disable_if_not_empty")
+	init_field()
+
+func init_field():
 	get_tree().call_group("cells", "update_text")
 
 	_set_all_cells_neighbors()

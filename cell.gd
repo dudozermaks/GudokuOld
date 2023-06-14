@@ -74,3 +74,8 @@ func get_as_long_string() -> String:
 		else:
 			res += "."
 	return res
+
+func reset():
+	numbers.clear()
+	disabled = false
+	is_small = false

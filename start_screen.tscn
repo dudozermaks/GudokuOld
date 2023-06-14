@@ -53,4 +53,9 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Start Game"
 
+[node name="LoadButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Load Game"
+
 [connection signal="button_up" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_up"]
+[connection signal="button_up" from="VBoxContainer/LoadButton" to="." method="_on_load_button_up"]

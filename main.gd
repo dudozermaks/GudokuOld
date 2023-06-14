@@ -4,19 +4,20 @@ var time : float
 var timer_stop : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_generate_new_field()
+	pass
 
 
-func _generate_new_field():
+func generate_new_field():
 	%Field.generate_new_field()
-	_reset_everythin()
+	_reset_everything()
 
 
-func _reset_everythin():
+func _reset_everything():
 	time = 0
 	timer_stop = false
 
 	%CheckLabel.visible = false
+	#FIXME generate difficulty based on current sudoku, not on last generated
 	%DifficultyLabel.text = "Difficulty: "
 	%DifficultyLabel.text += str(Globals.sudoku_generator.get_difficulty())
 
@@ -62,7 +63,7 @@ func _on_check_button_up():
 
 
 func _on_generate_new_button_up():
-	_generate_new_field()
+	generate_new_field()
 
 
 func _on_field_all_cells_completed():
