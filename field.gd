@@ -11,9 +11,34 @@ func _ready():
 	for cell in cells:
 		cell.text_updated.connect(_is_all_cells_completed)
 
-	# _string_to_field("417369825632158947958724316825437169791586432346912758289643571573291684164875293")
+	# string_to_field("417369825632158947958724316825437169791586432346912758289643571573291684164875293")
 	# get_tree().call_group("cells", "disable_if_not_empty")
 	# get_tree().call_group("cells", "update_text")
+
+func save_to_file(name : String = "user://save1.sudoku") -> void:
+	# size is 9*9=81
+	var initial_cells : String = ""
+	# size is 9*9*9=729 (because of pencilmarks)
+	var user_cells : String = ""
+
+	for line in range(0, 9):
+		for row in range(0, 9):
+			var cell : Cell = _get_cell(line, row)
+			# if cell is initial
+			if cell.disabled:
+				initial_cells += cell.get_as_short_string()
+				user_cells += "........."
+			else:
+				initial_cells += "."
+				user_cells += cell.get_as_long_string()
+
+	var file := FileAccess.open(name, FileAccess.WRITE)
+
+	file.store_line(initial_cells)
+	file.store_line(user_cells)
+
+	print("Saved to file at: " + file.get_path_absolute())
+	
 
 func _get_cell(line : int, row : int) -> Cell:
 	return get_node("Line%d/Cell%d" % [line, row])
@@ -27,7 +52,7 @@ func _set_focus() -> void:
 				return
 
 
-func _field_to_string() -> String:
+func field_to_string() -> String:
 	var result := ""
 	for line in range(board_size):
 		for row in range(board_size):
@@ -39,7 +64,7 @@ func _field_to_string() -> String:
 
 	return result
 
-func _string_to_field(string : String) -> void:
+func string_to_field(string : String) -> void:
 	for line in range(board_size):
 		for row in range(board_size):
 			var cell = _get_cell(line, row)
@@ -49,8 +74,8 @@ func _string_to_field(string : String) -> void:
 				cell.numbers.push_back(int(num))
 
 func generate_new_field() -> void:
-	_string_to_field(Globals.sudoku_generator.generate())
-	assert(validate() == Globals.VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + _field_to_string())
+	string_to_field(Globals.sudoku_generator.generate())
+	assert(validate() == Globals.VALIDATE.UNSOLVED, "Generated sudoku is wrong! Sudoku: " + field_to_string())
 
 	get_tree().call_group("cells", "disable_if_not_empty")
 	get_tree().call_group("cells", "update_text")

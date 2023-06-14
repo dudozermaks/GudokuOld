@@ -4,14 +4,18 @@ var time : float
 var timer_stop : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_create_new_field()
+	_generate_new_field()
 
 
-func _create_new_field():
+func _generate_new_field():
+	%Field.generate_new_field()
+	_reset_everythin()
+
+
+func _reset_everythin():
 	time = 0
 	timer_stop = false
 
-	%Field.generate_new_field()
 	%CheckLabel.visible = false
 	%DifficultyLabel.text = "Difficulty: "
 	%DifficultyLabel.text += str(Globals.sudoku_generator.get_difficulty())
@@ -20,6 +24,7 @@ func _create_new_field():
 func _process(delta):
 	_update_time(delta)
 
+
 func _update_time(delta : float):
 	if !timer_stop:
 		time += delta
@@ -27,6 +32,7 @@ func _update_time(delta : float):
 	var seconds := fmod(time, 60)
 	# var milliseconds := time * 100
 	%TimerLabel.text = "%02d:%02d" % [minutes, seconds]
+
 
 func _on_check_button_up():
 	var is_solved = %Field.validate()
@@ -56,7 +62,7 @@ func _on_check_button_up():
 
 
 func _on_generate_new_button_up():
-	_create_new_field()
+	_generate_new_field()
 
 
 func _on_field_all_cells_completed():
@@ -67,5 +73,14 @@ func _on_pencil_button_toggled(button_pressed):
 	Globals.is_pencil_active = button_pressed
 
 
-func _on_clear_button_button_up():
+func _on_clear_button_up():
 	get_tree().call_group("cells", "clear_if_not_disabled")
+
+
+func _on_export_button_up():
+	DisplayServer.clipboard_set(%Field.field_to_string())
+
+
+func _on_save_button_up():
+	%Field.save_to_file()
+

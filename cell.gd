@@ -60,3 +60,17 @@ func clear_if_not_disabled():
 	if !disabled:
 		numbers.clear()
 		update_text()
+
+func get_as_short_string() -> String:
+	if numbers.size() != 1:
+		return "."
+	return str(numbers[0])
+
+func get_as_long_string() -> String:
+	var res = ""
+	for i in range(1, 10):
+		if i in numbers:
+			res += str(i)
+		else:
+			res += "."
+	return res
