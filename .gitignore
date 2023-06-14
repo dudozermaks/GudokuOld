@@ -5,3 +5,5 @@ test_build
 *.os
 .cache
 .sconsign.dblite
+
+sudoku_solver/compile_commands.json
