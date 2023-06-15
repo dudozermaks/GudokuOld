@@ -5,6 +5,7 @@ const board_size : int = 9
 const sqrt_board_size : int = sqrt(board_size)
 
 signal all_cells_completed
+signal new_field_loaded
 
 func _ready():
 	var cells = get_tree().get_nodes_in_group("cells")
@@ -19,7 +20,7 @@ func _ready():
 # possible solution: new string with cells state:
 # 0 - disabled
 # 1 - normal
-# 2 - small
+# 2 - small 
 # this method allows use only one string, both contain initial_cells and user_cells
 func save_to_file(filename : String = "user://save1.sudoku") -> void:
 	# size is 9*9=81
@@ -87,8 +88,8 @@ func load_from_file(filename : String = "user://save1.sudoku") -> void:
 					if user_cells[i] != ".":
 						cell.numbers.push_back(user_cells[i].to_int())
 
-	init_field()
 	print("Loaded file from: " + file.get_path_absolute())
+	init_field()
 
 
 func _get_cell(line : int, row : int) -> Cell:
@@ -103,12 +104,13 @@ func _set_focus() -> void:
 				return
 
 
-func field_to_string() -> String:
+func field_to_string(only_initial_cells : bool = false) -> String:
 	var result := ""
 	for line in range(board_size):
 		for row in range(board_size):
 			var cell := _get_cell(line, row)
-			if cell.numbers.size() != 1:
+
+			if cell.numbers.size() != 1 or (only_initial_cells and !cell.disabled):
 				result += "0"
 			else:
 				result += str(cell.numbers[0])
@@ -135,6 +137,7 @@ func init_field():
 
 	_set_all_cells_neighbors()
 	_set_focus()
+	emit_signal("new_field_loaded")
 
 # CELL NEIGHBORS SETTERS
 func _set_all_cells_neighbors() -> void:

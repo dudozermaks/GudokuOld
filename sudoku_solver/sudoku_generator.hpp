@@ -13,8 +13,8 @@ protected:
 public:
   SudokuGenerator();
   String generate();
-  bool is_valid(godot::String board);
-  int get_difficulty();
+  bool is_valid(godot::String puzzle);
+  int get_difficulty(godot::String puzzle);
   ~SudokuGenerator();
 };
 }
